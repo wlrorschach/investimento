@@ -1,10 +1,23 @@
 package com.invest.investimento.dto;
 
-public class CalculoRendimentoDTO {
+import java.io.Serializable;
+
+public class CalculoRendimentoDTO implements Serializable {
+    private static final long serialVersionUID = 403012794787837634L;
 
     private Double valorInvestido;
 
     private Double rendimento;
+
+    private Integer tempo;
+
+    public Integer getTempo() {
+        return tempo;
+    }
+
+    public void setTempo(Integer tempo) {
+        this.tempo = tempo;
+    }
 
     public CalculoRendimentoDTO() {
     }

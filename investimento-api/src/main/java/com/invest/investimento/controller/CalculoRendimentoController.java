@@ -18,7 +18,6 @@ public class CalculoRendimentoController {
     @Autowired
     private CalculoRendimentoService service;
 
-    
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CalculoRendimentoDTO> calcularRndimento(@RequestBody CalculoRendimentoDTO valor) {
         return ResponseEntity.ok(service.calcularRendimento(valor));
