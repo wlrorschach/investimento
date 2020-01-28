@@ -24,17 +24,28 @@ public class CalculoRendimentoService {
 
         resposta.setRendimento(rendimento);
         resposta.setValorInvestido(valorInvestido);
+        resposta.setTempo(tempo);
 
         return resposta;
     }
 
     private double contabilizarRendimento(final Integer tempo, Double valorInvestido) {
+        Double valorTotal = 0.0;
+        Integer tempoRestante = tempo;
+
+        for (int i = 0; i < tempo; i++) {
+            valorTotal += contabilizarRendimentoSemanal(tempoRestante, valorInvestido);
+            tempoRestante--;
+        }
+        return valorTotal;
+    }
+
+    private double contabilizarRendimentoSemanal(final Integer tempo, Double valorInvestido) {
         valorInvestido *= (Math.pow((1 + TAXA_SELIC / DIAS_UTEIS_ANO),
                 (tempo * DIAS_UTEIS_SEMANA) / DIAS_UTEIS_ANO));
 
-//        valorInvestido = 2;
         if (tempo > 0) {
-            contabilizarRendimento(tempo - 1, valorInvestido);
+            contabilizarRendimentoSemanal(tempo - 1, valorInvestido);
         }
         return valorInvestido;
 
