@@ -18,7 +18,7 @@ Projeto para efeito de avaliacao. Executa o calculo do rendimento a partir do pr
 
 Rodando a API
 =================
-* Abrir projeto e aguardar o Maven executar os downloas das dependencias
+* Abrir projeto e aguardar o Maven executar o download das dependências
 
 * Em debug configurations > Maven build 
   - Criar uma nova configuração executando o comando "clean install" no campo "Goals", com o nome-build  
@@ -29,10 +29,10 @@ Rodando a API
 # Parametros recebidos
 * Json contendo:
   * "valorInvestido": valor a ser investido semanalmente;
-  * "tempo" : tempo de premanencia no plano de investimento;
+  * "tempo" : tempo de permanencia no plano de investimento;
 
 # Retorno
 * Json contendo:
-  * "valorInvestido": valor a ser investido semanalmente
-  * "tempo" : tempo de premanencia no plano de investimento
+  * "valorInvestido": valor investido semanalmente
+  * "tempo" : tempo de permanencia no plano de investimento
   * "rendimento": valor contendo o total investido + rendimentos ao longo do tempo informado
