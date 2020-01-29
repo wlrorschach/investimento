@@ -53,10 +53,7 @@ public class CalculoRendimentoService {
     private double contabilizarRendimentoSemanal(final Integer tempo, Double valorInvestido) {
         valorInvestido *= (Math.pow((1 + TAXA_SELIC / DIAS_UTEIS_ANO),
                 (tempo * DIAS_UTEIS_SEMANA) / DIAS_UTEIS_ANO));
-
-        if (tempo > 0) {
-            contabilizarRendimentoSemanal(tempo - 1, valorInvestido);
-        }
+        
         return valorInvestido;
 
     }
