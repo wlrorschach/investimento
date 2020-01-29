@@ -6,7 +6,7 @@ Projeto para efeito de avaliacao. Executa o calculo do rendimento a partir do pr
 # Pré-requisitos
 * jdk-8
 
-# Linguagem de programação
+# Linguagem utilizada
 * Java
 
 # Tecnologias utilizadas
@@ -16,12 +16,13 @@ Projeto para efeito de avaliacao. Executa o calculo do rendimento a partir do pr
 # Clonando o projeto
 * Executar o comando no terminal do git bash: "https://github.com/wlrorschach/investimento.git"
 
-# Rodando a API
-* Abrir projeto e aguardar o Maven executar o downloas das dependencias
+Rodando a API
+=================
+* Abrir projeto e aguardar o Maven executar os downloas das dependencias
 
 * Em debug configurations > Maven build 
-  - Criar uma nova configuracao executando o comando "clean install" no campo "Goals", com o nome-build  
-  - Criar uma nova configuracao executando o comando "spring-boot:run" no campo "Goals" com o nome-run
+  - Criar uma nova configuração executando o comando "clean install" no campo "Goals", com o nome-build  
+  - Criar uma nova configuração executando o comando "spring-boot:run" no campo "Goals" com o nome-run
 * Executar o configuracao nome-build
 * Executar o configuracao nome-run
 
