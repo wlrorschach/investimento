@@ -3,6 +3,7 @@ package com.invest.investimento.service;
 import org.springframework.stereotype.Service;
 
 import com.invest.investimento.dto.CalculoRendimentoDTO;
+import com.invest.investimento.exception.TransactionalException;
 
 @Service
 public class CalculoRendimentoService {
@@ -11,22 +12,31 @@ public class CalculoRendimentoService {
     private static final Double DIAS_UTEIS_ANO = 252D;
     private static final Double DIAS_UTEIS_SEMANA = 5D;
 
-    public CalculoRendimentoDTO calcularRendimento(CalculoRendimentoDTO calc) {
-        final Integer tempo = calc.getTempo();
-        final Double valorInvestido = calc.getValorInvestido();
-        Double rendimento = 0.0;
+    private static final String ERRO_AO_CALCULAR = "Erro ao calcular rendimento";
 
-        if (valorInvestido != null) {
-            rendimento = contabilizarRendimento(tempo, valorInvestido);
+    public CalculoRendimentoDTO calcularRendimento(CalculoRendimentoDTO calc) throws TransactionalException {
+
+        try {
+
+            final Integer tempo = calc.getTempo();
+            final Double valorInvestido = calc.getValorInvestido();
+            Double rendimento = 0.0;
+
+            if( valorInvestido == null || tempo == null) {
+                throw new TransactionalException();
+            };
+                rendimento = contabilizarRendimento(tempo, valorInvestido);
+
+            CalculoRendimentoDTO resposta = new CalculoRendimentoDTO();
+
+            resposta.setRendimento(rendimento);
+            resposta.setValorInvestido(valorInvestido);
+            resposta.setTempo(tempo);
+
+            return resposta;
+        } catch (Exception e) {
+            throw new TransactionalException(ERRO_AO_CALCULAR);
         }
-
-        CalculoRendimentoDTO resposta = new CalculoRendimentoDTO();
-
-        resposta.setRendimento(rendimento);
-        resposta.setValorInvestido(valorInvestido);
-        resposta.setTempo(tempo);
-
-        return resposta;
     }
 
     private double contabilizarRendimento(final Integer tempo, Double valorInvestido) {
